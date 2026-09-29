@@ -1,0 +1,1 @@
+- **Changelog.** If the `changelog` skill is available, follow it when updating `CHANGELOG.md` or cutting a release.

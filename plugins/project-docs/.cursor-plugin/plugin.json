@@ -1,6 +1,6 @@
 {
   "name": "project-docs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Scaffold and keep a project's documentation current, sized to the project.",
   "author": {
     "name": "Julien Lavinh"

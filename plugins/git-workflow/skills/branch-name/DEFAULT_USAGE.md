@@ -1,0 +1,1 @@
+- **Branch.** If the `branch-name` skill is available, follow it when naming or creating a branch.
