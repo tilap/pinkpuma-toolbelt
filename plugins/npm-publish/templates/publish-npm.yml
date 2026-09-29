@@ -1,0 +1,66 @@
+# Automated npm publish via Trusted Publishing (OIDC).
+# Placeholders replaced by npm-publish-setup:
+#   {{WORKFLOW_NAME}}  — human-readable job title
+#   {{TAG_PREFIX}}     — e.g. mycli- (tag becomes mycli-v1.2.3)
+#   {{PACKAGE_DIR}}    — "." or a subdirectory containing package.json
+#   {{WORKFLOW_FILE}}  — this file's name under .github/workflows/ (for TP docs)
+#
+# On npmjs.com Trusted Publisher: allow "npm publish" for {{WORKFLOW_FILE}}.
+# Do not add --provenance unless the GitHub repo is public.
+
+name: {{WORKFLOW_NAME}}
+
+on:
+  push:
+    tags:
+      - "{{TAG_PREFIX}}v*"
+
+permissions:
+  contents: read
+  id-token: write # OIDC for npm Trusted Publishing
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: {{PACKAGE_DIR}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure tag points at main
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          if ! git merge-base --is-ancestor HEAD origin/main; then
+            echo "Tag ${GITHUB_REF_NAME} is not an ancestor of origin/main — refusing to publish."
+            exit 1
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Check version matches tag
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME#{{TAG_PREFIX}}v}"
+          PKG="$(node -p "require('./package.json').version")"
+          if [ "$TAG" != "$PKG" ]; then
+            echo "Tag {{TAG_PREFIX}}v${TAG} does not match package.json version ${PKG}"
+            exit 1
+          fi
+          node -v
+          npm -v
+
+      # Remove this step if package.json has no "test" script.
+      - name: Test
+        run: npm test
+
+      - name: Publish
+        run: npm publish --access public

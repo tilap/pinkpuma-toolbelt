@@ -1,0 +1,8 @@
+{
+  "name": "npm-publish",
+  "version": "0.1.0",
+  "description": "Audit and set up automated npm releases via GitHub Actions and Trusted Publishing (OIDC).",
+  "author": {
+    "name": "Julien Lavinh"
+  }
+}

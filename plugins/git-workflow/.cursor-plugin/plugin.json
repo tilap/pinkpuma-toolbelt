@@ -1,0 +1,8 @@
+{
+  "name": "git-workflow",
+  "version": "0.1.0",
+  "description": "Conventional commit messages, branch names, PR descriptions, and changelog entries.",
+  "author": {
+    "name": "Julien Lavinh"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "pinkpuma-toolbelt",
+  "description": "Personal marketplace of Claude Code plugins for daily development work.",
+  "owner": {
+    "name": "Julien La Vinh"
+  },
+  "plugins": [
+    {
+      "name": "git-workflow",
+      "source": "./plugins/git-workflow",
+      "description": "Conventional commit messages, branch names, PR descriptions, and changelog entries."
+    },
+    {
+      "name": "handoff",
+      "source": "./plugins/handoff",
+      "description": "Save and resume in-progress, uncommitted work across sessions."
+    },
+    {
+      "name": "project-docs",
+      "source": "./plugins/project-docs",
+      "description": "Scaffold and keep a project's documentation current, sized to the project."
+    },
+    {
+      "name": "dev-agents",
+      "source": "./plugins/dev-agents",
+      "description": "Review, test, debug, and feature-building subagents."
+    },
+    {
+      "name": "npm-publish",
+      "source": "./plugins/npm-publish",
+      "description": "Audit and set up automated npm releases via GitHub Actions and Trusted Publishing (OIDC)."
+    }
+  ]
+}
