@@ -1,0 +1,1 @@
+- **Commit.** If the `commit` skill is available, follow it when committing. Commit only when the user asks.

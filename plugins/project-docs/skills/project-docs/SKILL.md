@@ -2,8 +2,9 @@
 name: project-docs
 description: >-
   Scaffold, fill, or check a project's documentation — README, AGENTS.md, CHANGELOG,
-  and a docs/ set sized to the project. Use when setting up documentation for a project,
-  checking whether it has drifted from the code, or asked where the documentation stands.
+  and a docs/ set sized to the project. Use when setting up documentation, when it may
+  have drifted from the code, or when asked where the documentation stands. Apply the
+  update without waiting for approval.
 metadata:
   plugin: project-docs
 ---
@@ -20,35 +21,35 @@ Never assume it, even on a repository that looks obviously empty.
 
 **Shape** — a project uses exactly one, never mixed:
 
-| Found at the root | Shape |
-| --- | --- |
-| `DOCUMENTATION.md`, no `docs/` | `single-file` |
-| `docs/` with subdirectories | `tree` |
-| `docs/` with markdown only at the top level | `flat` |
-| Neither | undecided — pick one in Step 2 |
-| Both `DOCUMENTATION.md` and `docs/` | **stop, report it, ask** — never merge or delete either on your own |
+| Found at the root                           | Shape                                                             |
+| ------------------------------------------- | ----------------------------------------------------------------- |
+| `DOCUMENTATION.md`, no `docs/`              | `single-file`                                                     |
+| `docs/` with subdirectories                 | `tree`                                                            |
+| `docs/` with markdown only at the top level | `flat`                                                            |
+| Neither                                     | undecided — pick one in Step 2                                    |
+| Both `DOCUMENTATION.md` and `docs/`         | **stop and report it** — never merge or delete either on your own |
 
 **Inventory** — which owed files exist, which are placeholder-only.
 
 **Checker** — run the deterministic script for the rest (staleness, dead globs, broken
-links, missing frontmatter — see [scripts/docs_index.py](scripts/docs_index.py) for the
+links, missing frontmatter — see [../../scripts/docs_index.py](../../scripts/docs_index.py) for the
 full list of what it catches):
 
 ```bash
-python3 scripts/docs_index.py --project . --check --json
+python3 ../../scripts/docs_index.py --project . --check --json
 ```
 
-(`scripts/docs_index.py` sits next to this `SKILL.md`, one level up — resolve the path
-relative to wherever this skill's files were loaded from, not relative to the target
-project's own working directory.)
+(`../../scripts/docs_index.py` is relative to this file. Resolve it from wherever this
+skill was loaded, not from the target project's working directory.)
 
 On a repository with no documentation, it reports almost everything missing — that's a
 valid reading of the state, not a failure of the script.
 
-## Step 2 — Pick or confirm the shape
+## Step 2 — Pick the shape
 
-Default for an empty repository: **`flat`**. On a `partial` repository, infer the shape
-already in use from what's on disk rather than imposing the default.
+Default for an empty repository: **`flat`**. On a partial repository, infer the shape
+already in use from what's on disk rather than imposing the default. Do not ask which
+shape to use.
 
 - **`single-file`** — one `DOCUMENTATION.md` at the root, for a script or a spike.
   Sections in this order: `## Purpose`, `## Architecture`, `## Development`,
@@ -64,19 +65,24 @@ already in use from what's on disk rather than imposing the default.
   architecture documents.
 
 A project that has outgrown its shape (a `single-file` project needing a runbook, a
-`flat` project needing numbered ADRs) is told so — never silently migrated.
+`flat` project needing numbered ADRs) is reported in the final report — never silently
+migrated, and the update continues inside the shape already on disk.
 
 Root trio in every shape: `README.md`, `AGENTS.md`, `CHANGELOG.md` (Keep a Changelog
 format, live `## [Unreleased]` section).
 
-## Step 3 — Show the plan, then act
+## Step 3 — Act
 
-Print what's missing and what's next, ask once for the whole plan, then run in order —
-stop at the first step that needs an answer only the user can give.
+State what is missing, then do it. Do not ask for approval of the plan.
+
+Stop only when a project fact cannot be inferred and the next write would have to
+invent it. Leave a visible placeholder for that fact, name it in the report, and
+continue with every other step that does not depend on it.
 
 1. **Intake** — infer name, goal, stack, commands from `package.json` / `go.mod` /
-   `Cargo.toml` / `pyproject.toml` / existing `README.md` / source layout. Ask only what
-   can't be inferred (project name, one-sentence goal) — one line each, no elaboration.
+   `Cargo.toml` / `pyproject.toml` / existing `README.md` / source layout. If the
+   project name or the one-sentence goal cannot be inferred, leave that placeholder
+   and go on.
 2. **Create missing files only.** Never replace an existing file wholesale; merge in
    missing sections when a file exists but is incomplete.
 3. **Frontmatter** on every file under `docs/` (or once at the top of `DOCUMENTATION.md`
@@ -91,8 +97,8 @@ stop at the first step that needs an answer only the user can give.
    mark it `stale` and say so. Never bump `last_verified` on a document nobody read.
 5. **Regenerate the index** (`flat`/`tree` only — `single-file` has none):
    ```bash
-   python3 scripts/docs_index.py --project . --write
-   python3 scripts/docs_index.py --project . --check
+   python3 ../../scripts/docs_index.py --project . --write
+   python3 ../../scripts/docs_index.py --project . --check
    ```
 
 ## What this covers, and what it does not
@@ -105,7 +111,7 @@ stop at the first step that needs an answer only the user can give.
   plugin's own `skills/`/`agents`/`commands` as "this project's documentation".
 - **Time**: the present, plus decided history. Roadmaps belong in the issue tracker, not
   in `docs/`.
-- Ask: "would this sentence be true if a human had written it, today?"
+- Check: "would this sentence be true if a human had written it, today?"
 
 ## Constraints
 
@@ -113,8 +119,8 @@ stop at the first step that needs an answer only the user can give.
 - **No forced migration.** A repository documenting itself differently already wins —
   report the divergence once, follow it, never move files to match this skill's
   structure without being asked.
-- **Never invent a project fact.** Ask, or leave the placeholder visible and say so in
-  the report.
+- **Never invent a project fact.** Leave the placeholder visible and name it in the
+  report.
 - Do not commit changes unless the user asks.
 
 ## Report, in this order

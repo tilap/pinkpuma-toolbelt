@@ -1,0 +1,1 @@
+- **Code change.** If the `project-docs` skill is available, follow it in the same task and update the docs that cover what changed. Do not wait for a separate request to update the documentation.

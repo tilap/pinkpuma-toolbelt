@@ -1,0 +1,1 @@
+- **Pull request.** If the `pr-description` skill is available, follow it when opening a pull request.
