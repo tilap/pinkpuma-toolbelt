@@ -1,0 +1,8 @@
+{
+  "name": "nextjs-app-structure",
+  "version": "0.1.0",
+  "description": "House layout for a Next.js App Router app: routes, components, config, and a single env module.",
+  "author": {
+    "name": "Julien Lavinh"
+  }
+}

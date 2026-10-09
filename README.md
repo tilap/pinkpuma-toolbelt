@@ -9,13 +9,14 @@ Every plugin ships as a single source shared by both tools — see
 
 ## Plugins
 
-| Plugin                               | Purpose                                                                        |
-| ------------------------------------ | ------------------------------------------------------------------------------ |
-| [git-workflow](plugins/git-workflow) | Conventional commit messages, branch names, PR descriptions, changelog entries |
-| [handoff](plugins/handoff)           | Save and resume in-progress, uncommitted work across sessions                  |
-| [project-docs](plugins/project-docs) | Scaffold and keep a project's documentation current, sized to the project      |
-| [dev-agents](plugins/dev-agents)     | Review, test, debug, and feature-building subagents                            |
-| [npm-publish](plugins/npm-publish)   | Audit and set up automated npm releases (GitHub Actions + Trusted Publishing)  |
+| Plugin                                               | Purpose                                                                                        |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [git-workflow](plugins/git-workflow)                 | Conventional commit messages, branch names, PR descriptions, changelog entries                 |
+| [handoff](plugins/handoff)                           | Save and resume in-progress, uncommitted work across sessions                                  |
+| [project-docs](plugins/project-docs)                 | Scaffold and keep a project's documentation current, sized to the project                      |
+| [dev-agents](plugins/dev-agents)                     | Review, test, debug, and feature-building subagents                                            |
+| [npm-publish](plugins/npm-publish)                   | Audit and set up automated npm releases (GitHub Actions + Trusted Publishing)                  |
+| [nextjs-app-structure](plugins/nextjs-app-structure) | House layout for a Next.js App Router app: routes, components, config, and a single env module |
 
 ## Install
 
