@@ -1,0 +1,1 @@
+- **GitHub spec issues.** If the `to-tickets` skill is available, never implement a GitHub issue labelled `spec` in one go: implement its sub-issue tickets instead, one per session, starting with those that have no open blocker.

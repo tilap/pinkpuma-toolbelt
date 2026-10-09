@@ -16,6 +16,7 @@ Every plugin ships as a single source shared by both tools — see
 | [project-docs](plugins/project-docs)                 | Scaffold and keep a project's documentation current, sized to the project                      |
 | [dev-agents](plugins/dev-agents)                     | Review, test, debug, and feature-building subagents                                            |
 | [npm-publish](plugins/npm-publish)                   | Audit and set up automated npm releases (GitHub Actions + Trusted Publishing)                  |
+| [spec-workflow](plugins/spec-workflow)               | Business need → agreed brief → spec issue → vertical-slice GitHub tickets                      |
 | [nextjs-app-structure](plugins/nextjs-app-structure) | House layout for a Next.js App Router app: routes, components, config, and a single env module |
 
 ## Install
@@ -48,6 +49,18 @@ holds no credentials of its own.
 
 Each plugin ships a `.cursor-plugin/plugin.json` beside its Claude Code manifest. Add a
 plugin from Cursor's plugin manager by pointing it at `plugins/<name>/`.
+
+### Pinkpuma-deck
+
+```sh
+npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@git-workflow --ref git-workflow-v0.2.0
+npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@project-docs --ref project-docs-v0.2.0
+npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@handoff --ref handoff-v0.1.0
+npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@dev-agents --ref dev-agents-v0.1.0
+npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@npm-publish --ref npm-publish-v0.1.0
+npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@spec-workflow --ref spec-workflow-v0.1.0
+```
+
 
 ## Repository layout and contributing
 

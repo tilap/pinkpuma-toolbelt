@@ -31,6 +31,11 @@
       "description": "Audit and set up automated npm releases via GitHub Actions and Trusted Publishing (OIDC)."
     },
     {
+      "name": "spec-workflow",
+      "source": "./plugins/spec-workflow",
+      "description": "Turn a business need into an agreed brief, a spec issue, and vertical-slice GitHub tickets."
+    },
+    {
       "name": "nextjs-app-structure",
       "source": "./plugins/nextjs-app-structure",
       "description": "House layout for a Next.js App Router app: routes, components, config, and a single env module."
