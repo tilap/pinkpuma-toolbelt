@@ -36,6 +36,11 @@
       "description": "Turn a business need into an agreed brief, a spec issue, and vertical-slice GitHub tickets."
     },
     {
+      "name": "feature-planning",
+      "source": "./plugins/feature-planning",
+      "description": "Turn an idea into a rich feature spec and self-contained dev tickets, across a separate feature board, ticket tracker and code."
+    },
+    {
       "name": "nextjs-app-structure",
       "source": "./plugins/nextjs-app-structure",
       "description": "House layout for a Next.js App Router app: routes, components, config, and a single env module."
