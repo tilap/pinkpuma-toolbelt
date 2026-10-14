@@ -116,7 +116,7 @@ order, blockers first, so each can reference real numbers:
 - **Same system as the feature, native links available** (GitHub): create each as a
   sub-issue of the feature with its blockers — `gh issue create --parent <feature>
   --blocked-by <n>,<n> --title … --body-file -` — plus a `priority:` label only on the
-  tickets whose draft carries one. **Do not add `ready-for-agent`** yet.
+  tickets whose draft carries one. **Do not add the ticket-ready label** yet.
 - **Feature on another system**: create the tickets in the tracker and, as the last line of
   each body, the feature's URL as a plain reference. Say that the downstream contract for
   this combination is not known; do not release (Step 8).
@@ -132,8 +132,8 @@ Only when the contract says labels start development, and only after the user ha
 the published tickets and says go. Explain what will happen first: **from the moment the
 labels are in place, development may start unattended.** On approval, in this order:
 
-1. Add the "tickets final" label (GitHub: `ready-for-agent`) to **every** ticket, together.
-2. Add the "feature final" label (GitHub: `ready-for-agent`) to the feature, **last**.
+1. Add the "tickets final" label (GitHub default: `task-ready`) to **every** ticket, together.
+2. Add the "feature final" label (GitHub default: `feature-ready`) to the feature, **last**.
 
 Never set or remove labels the system manages (GitHub: `mason:*`). A ticket added after the
 release is ignored by the system; if the list must change, tell the user rather than adding.

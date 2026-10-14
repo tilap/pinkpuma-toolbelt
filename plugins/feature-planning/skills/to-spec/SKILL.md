@@ -69,7 +69,7 @@ board in use → say so; the spec is still drafted.
    explicit approval.
 4. Create the feature through the tool for that board (`gh issue create --body-file -` for
    GitHub; the connector for Linear or Jira; otherwise hand the text over for pasting).
-   **Do not add `ready-for-agent`** or any label that tells a downstream system to start: that
+   **Do not add the feature-ready label** (GitHub default: `feature-ready`) or any label that tells a downstream system to start: that
    is the last step of `to-tickets`, once its tickets exist.
 5. Report the feature's link. Recommend `to-tickets` **in this same conversation**, so the
    spec never has to be fetched back.

@@ -11,10 +11,10 @@ say. A bad ticket produces bad work, silently.
 ## Shape
 
 ```
-Feature  (issue, label ready-for-agent)
- ├─ Ticket A  (sub-issue, label ready-for-agent)
- ├─ Ticket B  (sub-issue, label ready-for-agent, blocked by A)
- └─ Ticket C  (sub-issue, label ready-for-agent, blocked by B)
+Feature  (issue, label feature-ready)
+ ├─ Ticket A  (sub-issue, label task-ready)
+ ├─ Ticket B  (sub-issue, label task-ready, blocked by A)
+ └─ Ticket C  (sub-issue, label task-ready, blocked by B)
 ```
 
 - Feature and tickets are in **one repository**. Cross-repository sub-issues and blockers
@@ -30,15 +30,17 @@ Feature  (issue, label ready-for-agent)
 
 | Label              | On               | Meaning                                                                 | Set by            |
 | ------------------ | ---------------- | ----------------------------------------------------------------------- | ----------------- |
-| `ready-for-agent`  | Feature **and** each Ticket | Feature: content final, tickets may be read (**only labelled issues are listed**). Ticket: specification final | tickets: the creator, all together, after the list was validated; feature: the creator, last |
+| `feature-ready`    | Feature          | Content final, tickets may be read (**only labelled issues are listed**) | the creator, last |
+| `task-ready`       | each Ticket      | The ticket's specification is final | the creator, on all tickets together, after the list was validated |
 | `merge-when-ready` | Feature          | The final pull request may be merged without a human                    | creator or human  |
 | `ready`            | Feature / Ticket | Resume after an escalation                                              | a human           |
 | `project:<name>`   | Feature          | The project. A ticket takes its feature's. Missing: a configured default | the creator       |
 | `priority:<n>`     | Feature / Ticket | `0`–`100`, or `low` 25, `normal` 50, `high` 75, `urgent` 100. Missing: 50 | the creator     |
 | `mason:*`          | any              | State labels the system writes. **Never set or remove them**            | the system        |
 
-`ready-for-agent` is one label with two roles, told apart by position: a feature is a
-top-level issue, a ticket is a sub-issue.
+The two labels may share one name (for example `ready-for-agent` for both): a feature is a
+top-level issue and a ticket is a sub-issue, so the same label is read on each side without
+confusion. Everything below applies to either choice.
 
 **Label names.** The names above are this plugin's defaults, kept in this one file. The
 system can be configured with other names, but the plugin cannot see that configuration, so:
@@ -89,9 +91,9 @@ There is no acceptance-criteria field: say it in the body. Ticked boxes are fine
 
 ## When work starts
 
-A feature opens when **all** hold: it carries `ready-for-agent`; every feature blocking it is
+A feature opens when **all** hold: it carries `feature-ready`; every feature blocking it is
 `done`; no other feature is open on the project; it has at least one ticket and **every**
-ticket carries `ready-for-agent`.
+ticket carries `task-ready`.
 
 - Tickets are read **once, when the feature opens**. A ticket added later is ignored.
 - Edits after work started are not applied; to change running work, close it and write a
@@ -99,11 +101,11 @@ ticket carries `ready-for-agent`.
 
 **Order of creation** — so nothing opens on a half-written list:
 
-1. Create the feature **without** `ready-for-agent`.
+1. Create the feature **without** `feature-ready`.
 2. Create all tickets as sub-issues, with blockers and priorities.
 3. A human validates the list.
-4. Add `ready-for-agent` to every ticket, together.
-5. Add `ready-for-agent` to the feature, **last**.
+4. Add `task-ready` to every ticket, together.
+5. Add `feature-ready` to the feature, **last**.
 
 Steps 4 and 5 start unattended development: the moment they are done, the system may begin.
 
@@ -129,7 +131,7 @@ Feature:
 - [ ] a real title; a body that says what and why, for a reviewer
 - [ ] `project:<name>` (or the default applies); at most one `priority:`
 - [ ] *Blocked by* set if another feature must land first
-- [ ] `ready-for-agent` added **last**
+- [ ] `feature-ready` added **last**
 
 Each ticket:
 
@@ -138,4 +140,4 @@ Each ticket:
 - [ ] leaves the checks green when merged alone
 - [ ] *Blocked by* set to the tickets it needs, no cycle
 - [ ] at most one `priority:` label
-- [ ] `ready-for-agent` added together with its siblings
+- [ ] `task-ready` added together with its siblings
