@@ -28,15 +28,15 @@ Feature  (issue, label feature-ready)
 
 ## Labels
 
-| Label              | On               | Meaning                                                                 | Set by            |
-| ------------------ | ---------------- | ----------------------------------------------------------------------- | ----------------- |
-| `feature-ready`    | Feature          | Content final, tickets may be read (**only labelled issues are listed**) | the creator, last |
-| `task-ready`       | each Ticket      | The ticket's specification is final | the creator, on all tickets together, after the list was validated |
-| `merge-when-ready` | Feature          | The final pull request may be merged without a human                    | creator or human  |
-| `ready`            | Feature / Ticket | Resume after an escalation                                              | a human           |
-| `project:<name>`   | Feature          | The project. A ticket takes its feature's. Missing: a configured default | the creator       |
-| `priority:<n>`     | Feature / Ticket | `0`–`100`, or `low` 25, `normal` 50, `high` 75, `urgent` 100. Missing: 50 | the creator     |
-| `mason:*`          | any              | State labels the system writes. **Never set or remove them**            | the system        |
+| Label              | On               | Meaning                                                                   | Set by                                                             |
+| ------------------ | ---------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `feature-ready`    | Feature          | Content final, tickets may be read (**only labelled issues are listed**)  | the creator, last                                                  |
+| `task-ready`       | each Ticket      | The ticket's specification is final                                       | the creator, on all tickets together, after the list was validated |
+| `merge-when-ready` | Feature          | The final pull request may be merged without a human                      | creator or human                                                   |
+| `to-resume`        | Feature / Ticket | Resume after an escalation                                                | a human                                                            |
+| `project:<name>`   | Feature          | The project. A ticket takes its feature's. Missing: a configured default  | the creator                                                        |
+| `priority:<n>`     | Feature / Ticket | `0`–`100`, or `low` 25, `normal` 50, `high` 75, `urgent` 100. Missing: 50 | the creator                                                        |
+| `mason:*`          | any              | State labels the system writes. **Never set or remove them**              | the system                                                         |
 
 The two labels may share one name (for example `ready-for-agent` for both): a feature is a
 top-level issue and a ticket is a sub-issue, so the same label is read on each side without
