@@ -22,6 +22,19 @@ rather than inventing one.
 Skip a step that buys nothing: a need small enough for one ticket can go from `grill`
 straight to `to-tickets`.
 
+### Handing over to the next step
+
+The skills run only when the person types their command (`/feature-planning:grill`,
+`/feature-planning:to-spec`, `/feature-planning:to-tickets`): the host refuses a call made by
+the model. So a step never starts the next one. It ends by saying which command to type,
+in this same conversation so that what was agreed stays in context, and it does not ask a
+question such as "shall we go on?" that it could not honour. If the person answers yes
+anyway, repeat the command to type; do not call the skill, and do not carry out its workflow
+without it.
+
+Exception: when the `plan` command runs the steps, it moves on by itself once the person
+has confirmed, and a step's closing line about the command to type does not apply.
+
 ## The three places
 
 Work involves up to three independent systems. They may be the same product or three

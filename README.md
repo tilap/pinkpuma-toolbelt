@@ -59,6 +59,7 @@ npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@handoff --ref handoff-v0.1.0
 npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@dev-agents --ref dev-agents-v0.1.0
 npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@npm-publish --ref npm-publish-v0.1.0
 npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@nextjs-app-structure --ref nextjs-app-structure-v0.1.0
+npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@feature-planning --ref feature-planning-v0.1.0
 ```
 
 

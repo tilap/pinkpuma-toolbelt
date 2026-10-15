@@ -71,8 +71,9 @@ board in use → say so; the spec is still drafted.
    GitHub; the connector for Linear or Jira; otherwise hand the text over for pasting).
    **Do not add the feature-ready label** (GitHub default: `feature-ready`) or any label that tells a downstream system to start: that
    is the last step of `to-tickets`, once its tickets exist.
-5. Report the feature's link. Recommend `to-tickets` **in this same conversation**, so the
-   spec never has to be fetched back.
+5. Report the feature's link and tell the person to type `/feature-planning:to-tickets` **in
+   this same conversation**, so the spec never has to be fetched back (Handing over to the
+   next step, in the conventions). You cannot start it yourself.
 
 The published spec is a snapshot of what was known today. Lasting truths discovered during
 implementation belong in a decision record or the project's docs, not in an edited spec.

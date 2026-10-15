@@ -92,8 +92,10 @@ assumed, open questions empty or explicitly deferred by the user. Then:
 
 1. Show the final **Settled so far** and ask the user to confirm it matches their
    understanding.
-2. Size the need and end with exactly one recommended next step:
-   - fits a single ticket → go straight to `to-tickets`;
-   - larger → run `to-spec` in this same conversation.
+2. Size the need and end with exactly one next step, as the conventions say (Handing over
+   to the next step): tell the person which command to type, in this same conversation:
+   - fits a single ticket → `/feature-planning:to-tickets`;
+   - larger → `/feature-planning:to-spec`.
 
-Do not start the next step yourself.
+Do not start the next step yourself, and do not ask whether to go on: you cannot start it, so
+the person has to type the command.
