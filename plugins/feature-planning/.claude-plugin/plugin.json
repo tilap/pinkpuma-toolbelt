@@ -1,0 +1,8 @@
+{
+  "name": "feature-planning",
+  "version": "0.1.0",
+  "description": "Turn an idea into a rich feature spec and self-contained dev tickets, with the feature board, the ticket tracker and the code kept separate.",
+  "author": {
+    "name": "Julien La Vinh"
+  }
+}

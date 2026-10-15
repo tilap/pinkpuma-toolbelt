@@ -31,9 +31,9 @@
       "description": "Audit and set up automated npm releases via GitHub Actions and Trusted Publishing (OIDC)."
     },
     {
-      "name": "spec-workflow",
-      "source": "./plugins/spec-workflow",
-      "description": "Turn a business need into an agreed brief, a spec issue, and vertical-slice GitHub tickets."
+      "name": "feature-planning",
+      "source": "./plugins/feature-planning",
+      "description": "Turn an idea into a rich feature spec and self-contained dev tickets, across a separate feature board, ticket tracker and code."
     },
     {
       "name": "nextjs-app-structure",

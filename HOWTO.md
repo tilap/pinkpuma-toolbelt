@@ -19,6 +19,8 @@ One repository, one marketplace, several plugins:
 │       │   └── <skill-name>/SKILL.md
 │       ├── agents/                      # only for plugins that ship subagents
 │       │   └── <agent-name>.md
+│       ├── commands/                    # only for thin entry points that run skills
+│       │   └── <command-name>.md
 │       └── README.md                    # what the plugin does, one line per skill/agent
 └── README.md
 ```
@@ -138,6 +140,22 @@ rather than assuming they took effect.
 Never name a host-specific tool inside a skill's instructions (e.g. a specific
 orchestration command). Describe the strategy in host-neutral prose instead, and let
 whichever tool runs the skill route to its own native mechanism.
+
+### Commands
+
+A skill is already a slash command (`/<plugin>:<skill>`), so a plugin does not need a command
+per skill, and a command named like a skill is ignored (the skill wins). Add a file under
+`commands/` only for an entry point a skill is not: a short name for a longer chain, or one
+command that runs several skills in order.
+
+- Keep the command thin: it says which skills to run, in what order, and what holds the chain
+  together. The rules stay in the skills.
+- A skill with `disable-model-invocation: true` cannot be called by name from a command: the call
+  is blocked. Have the command read the skill's file (`${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md`)
+  and follow it, and give the command the same `disable-model-invocation: true`.
+- A command never approves anything for the person: the approvals written in the skills still apply.
+- Commands are a Claude Code feature. Cursor's handling of `commands/` is not confirmed, so check
+  it before relying on a command there.
 
 ### Other rules
 

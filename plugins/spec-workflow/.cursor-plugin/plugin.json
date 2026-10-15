@@ -1,8 +1,0 @@
-{
-  "name": "spec-workflow",
-  "version": "0.1.0",
-  "description": "Turn a business need into an agreed brief, a spec issue, and vertical-slice GitHub tickets.",
-  "author": {
-    "name": "Julien Lavinh"
-  }
-}
