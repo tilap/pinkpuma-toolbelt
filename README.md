@@ -2,21 +2,20 @@
 
 A private marketplace of [Claude Code](https://code.claude.com) and [Cursor](https://cursor.com)
 plugins for everyday development work: git conventions, session handoff, project
-documentation, review/test/debug subagents, and automated npm publish.
+documentation, feature planning, and automated npm publish.
 
 Every plugin ships as a single source shared by both tools — see
 [HOWTO.md](HOWTO.md) for how that works and how to add to it.
 
 ## Plugins
 
-| Plugin                                               | Purpose                                                                                        |
-| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| [git-workflow](plugins/git-workflow)                 | Conventional commit messages, branch names, PR descriptions, changelog entries                 |
-| [handoff](plugins/handoff)                           | Save and resume in-progress, uncommitted work across sessions                                  |
-| [project-docs](plugins/project-docs)                 | Scaffold and keep a project's documentation current, sized to the project                      |
-| [dev-agents](plugins/dev-agents)                     | Review, test, debug, and feature-building subagents                                            |
-| [npm-publish](plugins/npm-publish)                   | Audit and set up automated npm releases (GitHub Actions + Trusted Publishing)                  |
-| [nextjs-app-structure](plugins/nextjs-app-structure) | House layout for a Next.js App Router app: routes, components, config, and a single env module |
+| Plugin                                       | Purpose                                                                                                      |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [git-workflow](plugins/git-workflow)         | Conventional commit messages, branch names, PR descriptions, changelog entries                               |
+| [handoff](plugins/handoff)                   | Save and resume in-progress, uncommitted work across sessions                                                |
+| [project-docs](plugins/project-docs)         | Scaffold and keep a project's documentation current, sized to the project                                    |
+| [feature-planning](plugins/feature-planning) | Idea → grilled need → rich feature spec → self-contained dev tickets (board, tracker and code kept separate) |
+| [npm-publish](plugins/npm-publish)           | Audit and set up automated npm releases (GitHub Actions + Trusted Publishing)                                |
 
 ## Install
 
@@ -55,9 +54,8 @@ plugin from Cursor's plugin manager by pointing it at `plugins/<name>/`.
 npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@git-workflow --ref git-workflow-v0.2.0
 npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@project-docs --ref project-docs-v0.2.0
 npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@handoff --ref handoff-v0.1.0
-npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@dev-agents --ref dev-agents-v0.1.0
+npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@feature-planning --ref feature-planning-v0.1.0
 npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@npm-publish --ref npm-publish-v0.1.0
-npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@nextjs-app-structure --ref nextjs-app-structure-v0.1.0
 ```
 
 
