@@ -11,19 +11,9 @@
       "description": "Conventional commit messages, branch names, PR descriptions, and changelog entries."
     },
     {
-      "name": "handoff",
-      "source": "./plugins/handoff",
-      "description": "Save and resume in-progress, uncommitted work across sessions."
-    },
-    {
       "name": "project-docs",
       "source": "./plugins/project-docs",
       "description": "Scaffold and keep a project's documentation current, sized to the project."
-    },
-    {
-      "name": "feature-planning",
-      "source": "./plugins/feature-planning",
-      "description": "Turn an idea into a rich feature spec and self-contained dev tickets, across a separate feature board, ticket tracker and code."
     },
     {
       "name": "npm-publish",
