@@ -97,6 +97,13 @@ as cases, never as test code — and the reviewer can match criterion to test (g
 - one or more **cases** per criterion, as Given / When / Then: the nominal path, the edges
   (empty, limit, duplicate), and the refusals the spec requires. Each case names the rule
   or scenario it covers (`R2`, `S4`);
+- **one data set per case, and a Given that makes the Then observable.** A Then with a
+  number in it (a page of 50, a cap of 200, 3 rows kept by a filter) names in its Given the
+  data that produces that number, past any bound: "Given 210 notes on one day, when
+  listing with limit 500, then 200" — never "Given 60 notes … then at most 200", which no
+  seed of 60 can show. A criterion that needs two sets of data (60 rows for the page, more
+  than 200 for the cap) is two cases. The agent that writes the tests seeds exactly what
+  the Given says; a Given it has to complete by guessing is where the tests go wrong;
 - the **seam and the interface under test**: the public function, endpoint or command, with
   its name, signature, inputs and outputs. Tests are written against something that does not
   exist yet; without the interface they would fail on a missing import instead of on the
@@ -131,8 +138,9 @@ as a short table (ticket × check). Fix what fails. In particular, check what th
 would drop silently: missing title or body, more than one priority label or a value off the
 contract's scale, a cycle, a ticket that relies on a later one. Also check that no required
 order rests on priorities alone, and that every ticket has a Tests section (cases with
-Given / When / Then and the interface under test named) or an explicit `Tests: none` with
-its reason and the check that guards it.
+Given / When / Then and the interface under test named, each numeric Then produced by the
+data its own Given seeds) or an explicit `Tests: none` with its reason and the check that
+guards it.
 
 Then build the **review sheet**, the input of the plan review and of the final review:
 
@@ -217,11 +225,12 @@ editing them.
   and outputs>
 - **Where**: <test file to add or extend, framework already in use>
 
-| Case | Given | When | Then | Covers |
-| ---- | ----- | ---- | ---- | ------ |
-| nominal | <state> | <action> | <observable result> | R1 |
-| edge | <state> | <action> | <observable result> | S3 |
-| refusal | <state> | <action> | <observable result> | R2 |
+| Case    | Given                                                 | When                                       | Then                        | Covers |
+| ------- | ----------------------------------------------------- | ------------------------------------------ | --------------------------- | ------ |
+| nominal | <state>                                               | <action>                                   | <observable result>         | R1     |
+| edge    | <state>                                               | <action>                                   | <observable result>         | S3     |
+| bound   | <more rows than the bound, e.g. 210 notes on one day> | <the request that hits it, e.g. limit 500> | <the bound, e.g. 200 notes> | R4     |
+| refusal | <state>                                               | <action>                                   | <observable result>         | R2     |
 
 <When nothing can be tested first, replace the above with: "Tests: none — <reason>. Guarded
 by: <existing check>.">

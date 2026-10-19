@@ -16,6 +16,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   with Given / When / Then cases, the interface under test, the file and framework, or an
   explicit `Tests: none` with its reason. Gate A item 12 checks it; gate B item 2 asks that the
   tests were written before the code and not edited by it.
+- `to-tickets`: one data set per case, and a Given that produces every number of its Then,
+  past the bound when there is one ("Given 210 notes … then 200", not "Given 60 … at most
+  200"). Gate A item 13 checks the arithmetic from Given to Then. A ticket that left the
+  seed to the tests agent got, three runs in a row, a test no implementation could pass.
 - `grill` and `to-spec`: cross-cutting concerns (migration, security, limits, dependencies,
   compatibility) are settled and recorded.
 - GitHub contract: what the planning side expects from the system's reviews.

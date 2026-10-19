@@ -11,11 +11,11 @@ pull requests the development system opens; the plugin prepares their inputs so 
 reviewer has everything at hand: criteria that can fail in the tickets, and a review sheet
 on the feature.
 
-| Gate | When | Reviewer sees | Run by |
-| ---- | ---- | ------------- | ------ |
-| **A. Plan** | Before the tickets are released | Spec, tickets as published, review sheet | the person, with `to-tickets` |
-| **B. Ticket** | Each ticket's pull request, into the feature branch | The ticket body, the diff, the check results | downstream |
-| **C. Feature** | The final pull request | The feature body, the review sheet, the cumulative diff | downstream |
+| Gate           | When                                                | Reviewer sees                                           | Run by                        |
+| -------------- | --------------------------------------------------- | ------------------------------------------------------- | ----------------------------- |
+| **A. Plan**    | Before the tickets are released                     | Spec, tickets as published, review sheet                | the person, with `to-tickets` |
+| **B. Ticket**  | Each ticket's pull request, into the feature branch | The ticket body, the diff, the check results            | downstream                    |
+| **C. Feature** | The final pull request                              | The feature body, the review sheet, the cumulative diff | downstream                    |
 
 ## How to report
 
@@ -56,6 +56,12 @@ Run after the tickets are published and before any ready label is added.
     framework given — or an explicit `Tests: none` with its reason and the existing check
     that guards it. *Evidence*: per ticket, the cases or the reason. *On fail*: write the
     cases, or state why there are none; a ticket cannot go out without one or the other.
+13. **Every numeric Then is produced by its own Given.** For each case whose Then holds a
+    number (a page size, a cap, a count after a filter), the Given seeds the data that
+    yields that number, past the bound when there is one, and no case relies on two sets of
+    data. *Evidence*: per case, the arithmetic from Given to Then in one line. *On fail*:
+    rewrite the Given or split the case; a Then the tests agent must complete by guessing
+    is how it writes a test no implementation can pass.
 
 ## Gate B — Ticket (each pull request)
 
