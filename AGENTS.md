@@ -45,7 +45,7 @@ restructuring one.
 
 ## Writing DEFAULT_USAGE.md
 
-`DEFAULT_USAGE.md` is optional. When present, `@pinkpuma/deck` does **not** copy it into
+`DEFAULT_USAGE.md` is optional. When present, `@toolmesh/agent-deck` does **not** copy it into
 the installed skill. On sync it injects the body into a marked `## Skills` block in the
 **consumer project's** `AGENTS.md` — a file agents read for the whole project, not for
 one skill in isolation.
