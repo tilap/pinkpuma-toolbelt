@@ -49,9 +49,9 @@ plugin from Cursor's plugin manager by pointing it at `plugins/<name>/`.
 ### Pinkpuma-deck
 
 ```sh
-npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@git-workflow --ref git-workflow-v0.2.0
-npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@project-docs --ref project-docs-v0.2.0
-npx @pinkpuma/deck add tilap/pinkpuma-toolbelt@npm-publish --ref npm-publish-v0.1.0
+npx @toolmesh/agent-deck add tilap/pinkpuma-toolbelt@git-workflow --ref git-workflow-v0.2.0
+npx @toolmesh/agent-deck add tilap/pinkpuma-toolbelt@project-docs --ref project-docs-v0.2.0
+npx @toolmesh/agent-deck add tilap/pinkpuma-toolbelt@npm-publish --ref npm-publish-v0.1.0
 ```
 
 
